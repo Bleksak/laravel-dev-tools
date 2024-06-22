@@ -39,11 +39,10 @@ class RunCommand extends Command
             $command
         ];
 
-        $script = file_get_contents($runner);
-        $result = eval(str_replace('<?php', '', $script));
+        echo \exec('php ' . $runner . ' ' . \implode(' ', $argv), $output);
 
         // Here to make compiler happy!
-        if ($result && $baseDir && $argv) {
+        if ($baseDir && $argv) {
         }
 
         return;
